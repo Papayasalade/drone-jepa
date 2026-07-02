@@ -64,7 +64,7 @@ drone_jepa/               # the model + training (PyTorch)
 
 web-demo/
   rotor-rs/               # the simulator — standalone repo, vendored as a git
-                          # submodule (github.com/Papayasalade/rotor-rs)
+                          # submodule (also on crates.io as `rotor-rs`)
   racer/                  # app layer on top of it: SkyJEPA inference, MPPI
                           # planners, gates, RL runner, WASM demo bindings,
                           # model assets, and all data-gen/benchmark examples
