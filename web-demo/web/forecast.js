@@ -196,6 +196,19 @@ function updateWind(center, dtSec) {
 let followBase = new THREE.Vector3(0, 0, 2.4);
 const desiredBase = new THREE.Vector3();
 const followDelta = new THREE.Vector3();
+// Frame the drone tightly from the start: aim at its actual spawn point and
+// orbit from ~6 m out (the default orbit left it a speck in the embed).
+const CAM_OFFSET = new THREE.Vector3(-3.0, -4.6, 2.0);
+function recenterCamera() {
+  const s = sim.state();
+  followBase.set(s[0], s[1], s[2]);
+  controls.target.copy(followBase);
+  camera.position.copy(followBase).add(CAM_OFFSET);
+  controls.update();
+}
+controls.minDistance = 1.5;
+controls.maxDistance = 40;
+recenterCamera();
 function trackCamera(s) {
   // Preserve user panning: OrbitControls pans by moving both camera.position and
   // controls.target. Follow the drone with lag so its motion stays visible.
@@ -273,7 +286,7 @@ const HORIZON_STEPS = 10; // 0.5 s ghost
 document.getElementById("payload").onclick = () => sim.toggle_payload();
 document.getElementById("gust").onclick = () => sim.gust();
 document.getElementById("calm").onclick = () => sim.calm();
-document.getElementById("newDrone").onclick = () => { sim.new_drone(); fitDroneScale(); };
+document.getElementById("newDrone").onclick = () => { sim.new_drone(); fitDroneScale(); recenterCamera(); };
 fitDroneScale();
 let windLast = performance.now();
 const speedEl = document.getElementById("speed");

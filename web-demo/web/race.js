@@ -224,24 +224,8 @@ function wireSamples(sliderId, labelId, getter, setter) {
 }
 wireSamples("rfSamp", "rfSampV", () => racer.rf_samples(), (n) => racer.set_rf_samples(n));
 
-// --- reproducible seed / debug snapshot ---
-const seedEl = document.getElementById("seed");
-seedEl.value = String(racer.seed() >>> 0);
-document.getElementById("loadseed").onclick = () => {
-  const v = (Number(seedEl.value) >>> 0) || 0;
-  location.search = "?seed=" + v;
-};
+// --- new random track ---
 document.getElementById("rndseed").onclick = () => {
   location.search = "?seed=" + (Math.floor(Math.random() * 1e9) >>> 0);
 };
-document.getElementById("copydbg").onclick = async () => {
-  const json = racer.debug_snapshot();
-  try { await navigator.clipboard.writeText(json); } catch (_) {}
-  const b = document.getElementById("copydbg");
-  const old = b.textContent;
-  b.textContent = "copied!";
-  console.log("debug snapshot:", json);
-  setTimeout(() => (b.textContent = old), 1200);
-};
-
 window.racer = racer;
