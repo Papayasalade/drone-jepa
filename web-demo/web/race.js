@@ -20,7 +20,7 @@ scene.fog = new THREE.Fog(0x0b0f14, 24, 70);
 const camera = new THREE.PerspectiveCamera(58, innerWidth / innerHeight, 0.1, 300);
 camera.up.set(0, 0, 1); // z-up world
 // 3/4 view framing the full 0-15 m sky column (gates up high, floor below)
-camera.position.set(-7.0, -19.0, 11.0);
+camera.position.set(0.5, -12.5, 10.5);
 camera.lookAt(6.0, 0, 8.0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -30,7 +30,7 @@ document.body.appendChild(renderer.domElement);
 
 // mouse-controlled camera: drag to orbit, scroll to zoom, right-drag to pan
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.target.set(6.0, 0, 8.0);
+controls.target.set(6.0, 0, 9.0);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
 controls.update();
