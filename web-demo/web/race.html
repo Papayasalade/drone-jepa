@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>drone-jepa — autonomous gate racing (WASM)</title>
+    <style>
+      body { margin: 0; overflow: hidden; font: 13px ui-monospace, monospace; background: #0b0f14; color: #cde; }
+      #hud { position: fixed; top: 12px; left: 12px; z-index: 10; background: rgba(0,0,0,.45);
+             padding: 10px 12px; border-radius: 8px; line-height: 1.6; }
+      #hud b { color: #6cf; }
+      .ctl { margin-top: 8px; }
+      button, input { font: inherit; }
+      button { background: #1b2733; color: #cde; border: 1px solid #345; border-radius: 5px; padding: 3px 8px; cursor: pointer; }
+      .badge { color: #9f9; }
+    </style>
+  </head>
+  <body>
+    <div id="hud">
+      <div><b>drone-jepa</b> · RL vs a JEPA world-model racer · runs in your browser</div>
+      <div style="opacity:.7; margin:2px 0 4px">
+        <span style="color:#b38aff">●</span> RL policy &nbsp;·&nbsp;
+        <span style="color:#4dd0e1">●</span> JEPA rotor-force
+      </div>
+      <div id="stat">loading…</div>
+      <div class="ctl">
+        random drone each race <span id="dronev" style="opacity:.7"></span>
+      </div>
+      <div class="ctl">
+        <button id="reset">reset</button>
+        <button id="rndseed" title="new random track">random</button>
+      </div>
+      <div class="ctl">
+        <span style="color:#4dd0e1">●</span> JEPA rotor samples <input id="rfSamp" type="range" min="4" max="256" step="4" value="48" style="vertical-align:middle" /> <b id="rfSampV">48</b>
+      </div>
+      <div class="ctl">
+        seed <input id="seed" type="text" size="11" title="Replay the same random drone and track sequence" style="background:#0d141c;color:#6cf;border:1px solid #345;border-radius:5px;padding:2px 5px" />
+        <button id="loadseed" title="reload this exact random drone and track sequence">load</button>
+        <button id="copydbg" title="copy seed + live state as JSON">copy debug</button>
+      </div>
+      <div class="badge">~9K-param controllers · randomized drone · real-time WASM</div>
+      <div style="opacity:.6; margin-top:4px">drag to orbit · scroll to zoom · right-drag to pan</div>
+    </div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="./race.js"></script>
+  </body>
+</html>

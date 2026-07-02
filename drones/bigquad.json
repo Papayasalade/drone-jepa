@@ -1,0 +1,14 @@
+{
+  "_comment": "bigquad — a 1.2 kg quad (2.4x hummingbird mass), 25 cm arms, inertia scaled I ~ m*r^2, k_eta chosen for thrust-to-weight 3 at 1500 rpm, slower motors. Consumed by train_recipe (probe ground truth + DRONE_* env for the Rust sim/race harnesses).",
+  "mass": 1.2,
+  "ixx": 0.0189,
+  "iyy": 0.0191,
+  "izz": 0.0365,
+  "arm": 0.25,
+  "k_eta": 3.92e-6,
+  "k_m": 9.6e-8,
+  "tau_m": 0.02,
+  "tau_m_lo": 0.015,
+  "tau_m_hi": 0.03,
+  "k_w": 16.0
+}

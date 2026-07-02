@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>rotor-rs — WASM sanity harness</title>
+    <style>
+      body { font: 14px/1.5 ui-monospace, monospace; margin: 2rem; max-width: 640px; }
+      #log { white-space: pre; background: #111; color: #0f0; padding: 1rem; border-radius: 6px; }
+      button { font: inherit; margin: 0.25rem 0.5rem 0.25rem 0; padding: 0.4rem 0.8rem; }
+    </style>
+  </head>
+  <body>
+    <h1>rotor-rs in the browser</h1>
+    <p>Ground-truth quad dynamics (the RotorPy port) running as WASM. Hover, then poke it.</p>
+    <div>
+      <button id="reset">reset hover</button>
+      <button id="heavy">double mass</button>
+      <button id="wind">gust (wind +x)</button>
+      <button id="calm">calm</button>
+    </div>
+    <p id="log">loading…</p>
+    <p>Open the console and use <code>window.drone</code> (a <code>WasmDrone</code>) directly.</p>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

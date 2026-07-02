@@ -1,0 +1,46 @@
+[package]
+name = "rotor-rs"
+version = "0.1.0"
+edition = "2021"
+description = "Branchless, scalar-generic Rust port of RotorPy's single-vehicle quadrotor dynamics"
+
+# Native runtime crate has ZERO dependencies (hand-rolled linear algebra, generic
+# over a `Scalar` trait so the same kernel batches later). The `wasm` feature adds
+# the browser bindings (wasm-bindgen + serde glue); it's off by default so native
+# builds stay dependency-free. serde/serde_json are also dev-deps for the golden tests.
+[features]
+default = []
+# `jepa` enables the zero-dep SkyJEPA inference (learned world model for MPPI).
+jepa = []
+wasm = ["jepa", "dep:wasm-bindgen", "dep:serde", "dep:serde-wasm-bindgen"]
+mppi_debug = [] # prints MPPI internals for tuning
+
+[dependencies]
+wasm-bindgen = { version = "0.2", optional = true }
+serde = { version = "1", features = ["derive"], optional = true }
+serde-wasm-bindgen = { version = "0.6", optional = true }
+
+[dev-dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[lib]
+path = "src/lib.rs"
+# rlib for native tests/examples; cdylib for the wasm build.
+crate-type = ["cdylib", "rlib"]
+
+[[example]]
+name = "jepa_fly"
+required-features = ["jepa"]
+
+[[example]]
+name = "rotor_fly"
+required-features = ["jepa"]
+
+[[example]]
+name = "fleet_fly"
+required-features = ["jepa"]
+
+[[example]]
+name = "rl_fly"
+required-features = ["jepa"]

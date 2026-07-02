@@ -1,0 +1,32 @@
+# environments & caches
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.DS_Store
+
+# experiment outputs (checkpoints, datasets, logs — many GB, regenerable)
+artifacts/
+
+# build artifacts
+target/
+web-demo/web/pkg/
+
+# machine-specific symlink into .venv (pufferlib resources)
+resources
+nohup.out
+
+# trained model weights (regenerate via train_recipe + export, see README) —
+# EXCEPT the two the WASM demo embeds at compile time, which are committed so
+# a fresh clone can build the demos out of the box.
+web-demo/rotor-rs/assets/*.jblob
+web-demo/rotor-rs/assets/*.rlb
+!web-demo/rotor-rs/assets/bigquad_unified.jblob
+!web-demo/rotor-rs/assets/skyrl_rotor_bigquad.rlb
+web-demo/jepa-rs/weights/
+
+# blog drafts (published elsewhere)
+docs/BLOG*.md
+
+# AI working notes (local only)
+CLAUDE.md

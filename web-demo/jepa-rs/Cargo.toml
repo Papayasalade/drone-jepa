@@ -1,0 +1,13 @@
+[package]
+name = "jepa-rs"
+version = "0.1.0"
+edition = "2021"
+description = "Candle (Rust) inference port of the SkyJEPA world model; rolls out as an MPPI model for rotor-rs"
+
+[dependencies]
+candle-core = "0.8"
+rotor-rs = { path = "../rotor-rs", features = ["jepa"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>drone-jepa — forecast ghost</title>
+    <style>
+      body { margin: 0; overflow: hidden; font: 13px ui-monospace, monospace; background: #101419; color: #edf3ff; }
+      #hud { position: fixed; top: 12px; left: 12px; z-index: 10; background: rgba(8,12,16,.62);
+             padding: 10px 12px; border-radius: 8px; line-height: 1.65; max-width: 430px; }
+      #hud b { color: #d9c7ff; }
+      .ctl { margin-top: 8px; }
+      button, select, label { font: inherit; }
+      button, select { background: #1a2530; color: #edf3ff; border: 1px solid #415366; border-radius: 5px; padding: 3px 8px; }
+      button { cursor: pointer; }
+      label { margin-right: 10px; white-space: nowrap; }
+      .sw { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:middle; }
+      .muted { opacity: .68; }
+    </style>
+  </head>
+  <body>
+    <div id="hud">
+      <div><b>Forecast ghost</b> · mixed-recovery JEPA predicts the next seconds</div>
+      <div class="muted">
+        <span class="sw" style="background:#b38aff"></span>real drone
+        &nbsp; <span class="sw" style="background:#ffffff"></span>committed future
+        &nbsp; <span class="sw" style="background:#5dff9a"></span>JEPA forecast
+      </div>
+      <div id="stat">loading...</div>
+      <div class="ctl">
+        <label><input id="showJepa" type="checkbox" checked /> JEPA</label>
+      </div>
+      <div class="ctl">
+        <button id="payload">payload</button>
+        <button id="gust">gust</button>
+        <button id="calm">calm</button>
+        <button id="newDrone">new drone</button>
+        <label title="path tempo: 1.0 = the model's training pace; push past it and watch the forecast degrade">
+          speed <input id="speed" type="range" min="0.4" max="1.6" step="0.05" value="1.0" style="vertical-align:middle;width:110px" />
+          <span id="speedV">1.00x</span>
+        </label>
+      </div>
+      <div class="muted" style="margin-top:6px">20s committed path · tracking camera · drag to orbit · right-drag to pan · scroll to zoom</div>
+    </div>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="./forecast.js"></script>
+  </body>
+</html>

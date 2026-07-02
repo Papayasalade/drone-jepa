@@ -1,0 +1,23 @@
+[project]
+name = "drone-jepa"
+version = "0.1.0"
+description = "Tier-1 (sim-only) reproduction of SkyJEPA: latent dynamics world model for quadrotors"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0",
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "rotorpy",
+]
+
+[project.optional-dependencies]
+# PPO baseline (drone_jepa/rl/) — trains on the vectorized Rust env
+rl = ["pufferlib"]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["drone_jepa*"]

@@ -1,0 +1,11 @@
+[package]
+name = "rl-env"
+version = "0.1.0"
+edition = "2021"
+description = "Vectorized gate-racing RL environment over rotor-rs, exposed as a C ABI for PufferLib/CleanRL PPO training."
+
+[dependencies]
+rotor-rs = { path = "../rotor-rs" }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
