@@ -270,7 +270,6 @@ function meanError(a, b) {
 
 const stat = document.getElementById("stat");
 const HORIZON_STEPS = 10; // 0.5 s ghost
-const showJepaEl = document.getElementById("showJepa");
 document.getElementById("payload").onclick = () => sim.toggle_payload();
 document.getElementById("gust").onclick = () => sim.gust();
 document.getElementById("calm").onclick = () => sim.calm();
@@ -291,7 +290,6 @@ const TIME_SCALE = 1.0;
 let forecastDirty = true;
 let prevState = sim.state();
 let currState = prevState.slice();
-showJepaEl.addEventListener("change", () => { jepaTube.visible = showJepaEl.checked; });
 
 function interpState(a, b, t) {
   const out = b.slice();
@@ -339,7 +337,6 @@ function frame(now) {
     const jepa = f.slice(steps * 3, steps * 6);
     setTube(trueTube, truth);
     setTube(jepaTube, jepa);
-    jepaTube.visible = showJepaEl.checked;
     const jepaErr = meanError(jepa, truth);
 
     stat.innerHTML =

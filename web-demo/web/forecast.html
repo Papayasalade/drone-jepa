@@ -23,16 +23,12 @@
   </head>
   <body>
     <div id="hud">
-      <div><b>Forecast ghost</b> · mixed-recovery JEPA predicts the next seconds</div>
       <div class="muted">
         <span class="sw" style="background:#b38aff"></span>real drone
         &nbsp; <span class="sw" style="background:#ffffff"></span>committed future
         &nbsp; <span class="sw" style="background:#5dff9a"></span>JEPA forecast
       </div>
       <div id="stat">loading...</div>
-      <div class="ctl">
-        <label><input id="showJepa" type="checkbox" checked /> JEPA</label>
-      </div>
       <div class="ctl">
         <button id="payload">payload</button>
         <button id="gust">gust</button>
@@ -43,7 +39,6 @@
           <span id="speedV">1.00x</span>
         </label>
       </div>
-      <div class="muted" style="margin-top:6px">20s committed path · tracking camera · drag to orbit · right-drag to pan · scroll to zoom</div>
     </div>
     <script type="importmap">
       {
