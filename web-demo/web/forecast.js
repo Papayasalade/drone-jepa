@@ -198,7 +198,7 @@ const desiredBase = new THREE.Vector3();
 const followDelta = new THREE.Vector3();
 // Frame the drone tightly from the start: aim at its actual spawn point and
 // orbit from ~6 m out (the default orbit left it a speck in the embed).
-const CAM_OFFSET = new THREE.Vector3(-3.0, -4.6, 2.0);
+const CAM_OFFSET = new THREE.Vector3(-1.4, -2.1, 0.9);
 function recenterCamera() {
   const s = sim.state();
   followBase.set(s[0], s[1], s[2]);
