@@ -12,10 +12,8 @@ use std::path::Path;
 
 use jepa_rs::rollout::JepaRollout;
 use jepa_rs::SkyJepa;
-use rotor_rs::{
-    Controller, Course, Ctbr, Gate, MppiConfig, MppiController, Multirotor, QuadParamsInput, Quat,
-    State, Vec3,
-};
+use rotor_rs::{Ctbr, Multirotor, QuadParamsInput, Quat, State, Vec3, };
+use racer::{Controller, Course, Gate, MppiConfig, MppiController};
 
 fn hummingbird() -> QuadParamsInput {
     let d = 0.17 * std::f64::consts::FRAC_1_SQRT_2;

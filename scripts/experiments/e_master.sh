@@ -9,7 +9,7 @@ set -u
 cd "$(git rev-parse --show-toplevel)"
 PY=.venv/bin/python
 FM=artifacts/skyjepa_rotor_mix_recovery/dataset.pt
-RR=web-demo/rotor-rs
+RR=web-demo/racer
 SCRATCH=artifacts
 mkdir -p artifacts/logs
 COMMON=(--action-mode rotor_force --pos-mode relative --width-mult 2 --batch 256 --stride 5 --device mps)

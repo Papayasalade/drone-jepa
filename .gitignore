@@ -19,10 +19,10 @@ nohup.out
 # trained model weights (regenerate via train_recipe + export, see README) —
 # EXCEPT the two the WASM demo embeds at compile time, which are committed so
 # a fresh clone can build the demos out of the box.
-web-demo/rotor-rs/assets/*.jblob
-web-demo/rotor-rs/assets/*.rlb
-!web-demo/rotor-rs/assets/bigquad_unified.jblob
-!web-demo/rotor-rs/assets/skyrl_rotor_bigquad.rlb
+web-demo/racer/assets/*.jblob
+web-demo/racer/assets/*.rlb
+!web-demo/racer/assets/bigquad_unified.jblob
+!web-demo/racer/assets/skyrl_rotor_bigquad.rlb
 web-demo/jepa-rs/weights/
 
 # blog drafts (published elsewhere)

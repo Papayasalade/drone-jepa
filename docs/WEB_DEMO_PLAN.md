@@ -213,7 +213,7 @@ action — the showpiece).
       derivative gate ~1e-6, per-step + free-running rollout gates pass for all 9
       fixtures (`cargo test`). Found+fixed the `M_force` sign (RotorPy's einsum
       transpose cancels its leading minus). SE3 controller NOT ported (optional;
-      the demo replays/closes the loop itself). See `web-demo/rotor-rs/README.md`.
+      the demo replays/closes the loop itself). See `web-demo/racer/README.md`.
 - [x] **P2 `rotor-rs` → WASM** — `--features wasm` builds a `WasmDrone` (wasm-bindgen):
       `new(params, n_sub)` (partial JS params → hummingbird defaults), `step_rotor_force` /
       `step_ctbr`, `set_wind` / `set_mass` (the "break it" knobs), `state()` (17) /

@@ -37,7 +37,7 @@ via the Quickstart (~80 min) and export with `scripts/export_jepa_blob.py`.
 
 ```bash
 # build the WASM bundle once, then serve statically
-cd web-demo/rotor-rs
+cd web-demo/racer
 wasm-pack build --target web --out-dir ../web/pkg -- --features wasm
 cd ../web && python3 -m http.server 8000
 # -> http://localhost:8000/race.html and /forecast.html
@@ -63,7 +63,11 @@ drone_jepa/               # the model + training (PyTorch)
   rl/                     # PPO baseline (PufferLib on the Rust env)
 
 web-demo/
-  rotor-rs/               # Rust port of RotorPy: ~1300x faster, SIMD, WASM
+  rotor-rs/               # the simulator — standalone repo, vendored as a git
+                          # submodule (github.com/Papayasalade/rotor-rs)
+  racer/                  # app layer on top of it: SkyJEPA inference, MPPI
+                          # planners, gates, RL runner, WASM demo bindings,
+                          # model assets, and all data-gen/benchmark examples
     examples/             # rotor_fly (race benchmark), gen_dataset*, dagger_collect, ...
   rl-env/                 # vectorized C-ABI RL environment (~2.5M steps/s)
   jepa-rs/                # zero-dep JEPA forward pass (native + WASM), golden-tested
@@ -81,10 +85,11 @@ Requires Python 3.11+ (`pip install -e .`) and a Rust toolchain.
 
 ```bash
 # 1. build the simulator + harnesses
-cd web-demo/rotor-rs && cargo build --release --features jepa --examples && cd ../..
+git submodule update --init          # the rotor-rs simulator
+cd web-demo/racer && cargo build --release --examples && cd ../..
 
 # 2. generate training data (8000 trajectories, ~5 min, all cores)
-web-demo/rotor-rs/target/release/examples/gen_dataset_rf 8000 200 artifacts/data.bin 7
+web-demo/racer/target/release/examples/gen_dataset_rf 8000 200 artifacts/data.bin 7
 python scripts/convert_dataset.py artifacts/data.bin artifacts/data
 
 # 3. the recipe: train 4 seeds, probe-rank, confirm by racing, keep the winner
@@ -96,7 +101,7 @@ python -m drone_jepa.train_recipe --data artifacts/data.pt --stem mymodel \
 
 # 4. optional but worth it — one DAgger round (collect the planner's own
 #    mistakes, retrain warm-started; took our models from 8/12 to 12/12):
-ROTOR_BLOB=assets/mymodel.jblob web-demo/rotor-rs/target/release/examples/dagger_collect \
+ROTOR_BLOB=assets/mymodel.jblob web-demo/racer/target/release/examples/dagger_collect \
     artifacts/dagger.bin 2500 0
 python scripts/dagger_mix.py artifacts/data.pt artifacts/dagger.bin artifacts/data_dagger.pt
 python -m drone_jepa.train --data artifacts/data_dagger.pt --warm-start artifacts/mymodel.pt \
@@ -132,7 +137,7 @@ RL_ACTION_MODE=rotor MASS_LO=0.9 MASS_HI=1.5 SYM=1 ARM_LO=0.2 ARM_HI=0.3 \
 
 # export for the demo / native harnesses, then validate on the 12-race benchmark
 python scripts/export_rl_blob.py artifacts/skyrl_rotor.pt skyrl_rotor
-cd web-demo/rotor-rs && RL_ROTOR=1 RL_BLOB=assets/skyrl_rotor.rlb \
+cd web-demo/racer && RL_ROTOR=1 RL_BLOB=assets/skyrl_rotor.rlb \
     DRONE_MASS=1.2 DRONE_IXX=0.0189 DRONE_IYY=0.0191 DRONE_IZZ=0.0365 \
     DRONE_ARM=0.25 DRONE_K_ETA=3.92e-6 DRONE_K_M=9.6e-8 DRONE_TAU_M=0.02 \
     ./target/release/examples/rl_fly

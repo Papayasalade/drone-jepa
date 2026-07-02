@@ -37,7 +37,7 @@ from drone_jepa.data_gen.sim import (
     sample_params,
 )
 
-OUT_DIR = Path(__file__).resolve().parents[1] / "web-demo" / "fixtures" / "sim"
+OUT_DIR = Path(__file__).resolve().parents[1] / "web-demo" / "rotor-rs" / "fixtures" / "sim"
 
 
 # --------------------------------------------------------------------------- #

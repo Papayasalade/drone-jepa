@@ -41,12 +41,12 @@ if [[ ! -f "$BASE_DATA" ]]; then
 fi
 
 echo "== generating smooth SE3 add-on =="
-cargo run --release --manifest-path web-demo/rotor-rs/Cargo.toml \
+cargo run --release --manifest-path web-demo/racer/Cargo.toml \
   --example gen_dataset_se3 -- "$SMOOTH_N" "$STEPS" "$SMOOTH_BIN" "$SEED" fourier smooth
 python scripts/convert_dataset.py "$SMOOTH_BIN" "$SMOOTH_STEM"
 
 echo "== generating realistic recovery SE3 add-on =="
-cargo run --release --manifest-path web-demo/rotor-rs/Cargo.toml \
+cargo run --release --manifest-path web-demo/racer/Cargo.toml \
   --example gen_dataset_se3 -- "$RECOVERY_N" "$STEPS" "$RECOVERY_BIN" "$((SEED + 1))" gp recovery
 python scripts/convert_dataset.py "$RECOVERY_BIN" "$RECOVERY_STEM"
 
@@ -78,12 +78,12 @@ python scripts/export_jepa_blob.py "$EXP"
 
 if [[ "${RUN_RACE_EVAL:-0}" == "1" ]]; then
   echo "== rotor-force race sanity =="
-  ROTOR_BLOB="web-demo/rotor-rs/assets/${EXP}.jblob" cargo run --release --features jepa \
-    --manifest-path web-demo/rotor-rs/Cargo.toml \
+  ROTOR_BLOB="web-demo/racer/assets/${EXP}.jblob" cargo run --release --features jepa \
+    --manifest-path web-demo/racer/Cargo.toml \
     --example rotor_fly | tee "${MIX_DIR}/rotor_fly.log"
 fi
 
 echo "done:"
 echo "  dataset: $MIX_DATA"
 echo "  checkpoint: $CKPT"
-echo "  wasm blob: web-demo/rotor-rs/assets/${EXP}.jblob"
+echo "  wasm blob: web-demo/racer/assets/${EXP}.jblob"

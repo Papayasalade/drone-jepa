@@ -3,9 +3,17 @@
 version = 4
 
 [[package]]
+name = "racer"
+version = "0.1.0"
+dependencies = [
+ "rotor-rs",
+]
+
+[[package]]
 name = "rl-env"
 version = "0.1.0"
 dependencies = [
+ "racer",
  "rotor-rs",
 ]
 

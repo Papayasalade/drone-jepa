@@ -17,7 +17,7 @@ The blob is self-describing and little-endian:
 
 Usage:  python scripts/export_jepa_blob.py [stem]      (default: skyjepa_ctbr_1x)
 Reads   web-demo/jepa-rs/weights/<stem>.{safetensors,json}
-Writes  web-demo/rotor-rs/assets/<stem>.jblob
+Writes  web-demo/racer/assets/<stem>.jblob
 """
 import json
 import struct
@@ -28,7 +28,7 @@ from safetensors import safe_open
 
 ROOT = Path(__file__).resolve().parents[1]
 WEIGHTS = ROOT / "web-demo" / "jepa-rs" / "weights"
-ASSETS = ROOT / "web-demo" / "rotor-rs" / "assets"
+ASSETS = ROOT / "web-demo" / "racer" / "assets"
 
 
 def main() -> None:

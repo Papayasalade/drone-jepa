@@ -7,7 +7,7 @@ use std::path::Path;
 
 use jepa_rs::rollout::JepaRollout;
 use jepa_rs::SkyJepa;
-use rotor_rs::mppi::RolloutModel;
+use racer::mppi::RolloutModel;
 use rotor_rs::{Ctbr, CtbrCmd, Multirotor, QuadParamsInput, Quat, State, Vec3};
 
 fn params() -> QuadParamsInput {

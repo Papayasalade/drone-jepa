@@ -1,5 +1,5 @@
 // Minimal harness: load the WASM dynamics, fly a hover, expose live "break it" knobs.
-import init, { WasmDrone } from "./pkg/rotor_rs.js";
+import init, { WasmDrone } from "./pkg/racer.js";
 
 async function main() {
   await init();

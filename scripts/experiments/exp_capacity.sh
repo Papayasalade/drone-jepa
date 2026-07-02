@@ -3,7 +3,7 @@
 # (14K/20K/34K) on the full wide data, export, and wide-fleet-test each.
 cd "$(git rev-parse --show-toplevel)"
 PY=.venv/bin/python
-RR=web-demo/rotor-rs
+RR=web-demo/racer
 LOG=/tmp/exp_capacity.log
 exec >> $LOG 2>&1
 echo "=== capacity sweep started $(date +%H:%M) ==="

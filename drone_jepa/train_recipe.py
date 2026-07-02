@@ -69,7 +69,7 @@ from .model.jepa import SkyJEPA
 from .model.losses import latent_loss, physical_loss
 
 ROOT = Path(__file__).resolve().parents[1]
-RUST = ROOT / "web-demo" / "rotor-rs"
+RUST = ROOT / "web-demo" / "racer"
 
 # Flight gates (deterministic closed-loop race benchmarks). The criteria
 # reject the three observed bad-basin phenotypes: tumblers (crashes/flipped),

@@ -11,7 +11,7 @@ Steps (each idempotent, artifacts under artifacts/):
   2. EVAL    drone_jepa.eval.openloop --probe on the winner (RMSE table + the
              flight-predicting deployment-action probe).
   3. DEPLOY  export_jepa.py + export_jepa_blob.py — WASM/Rust-ready
-             web-demo/rotor-rs/assets/<stem>.jblob.
+             web-demo/racer/assets/<stem>.jblob.
 
 Warm-start reminder: future retrains should start from the confirmed winner:
     python -m drone_jepa.train --warm-start artifacts/<stem>.pt ...
@@ -67,7 +67,7 @@ def main():
     run("DEPLOY", [py, "scripts/export_jepa_blob.py", args.stem])
 
     print(f"\nPIPELINE DONE: artifacts/{args.stem}.pt  +  "
-          f"web-demo/rotor-rs/assets/{args.stem}.jblob")
+          f"web-demo/racer/assets/{args.stem}.jblob")
     print(f"Warm-start future retrains:  python -m drone_jepa.train "
           f"--warm-start artifacts/{args.stem}.pt ...")
 

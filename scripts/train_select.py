@@ -31,7 +31,7 @@ from pathlib import Path
 sys.path.insert(0, ".")
 
 ROOT = Path(__file__).resolve().parents[1]
-RR = ROOT / "web-demo" / "rotor-rs"
+RR = ROOT / "web-demo" / "racer"
 SUMMARY = re.compile(
     r"== (?P<wins>\d+)/(?P<trials>\d+) WON, (?P<crashes>\d+) hard-crashed, "
     r"(?P<respawns>\d+) respawns, (?P<gates>[0-9.]+) gates/race, "

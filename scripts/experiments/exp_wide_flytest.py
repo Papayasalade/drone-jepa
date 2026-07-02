@@ -20,7 +20,7 @@ HUM_I = (3.65e-3, 3.68e-3, 7.03e-3)
 
 
 def sample_drone(rng, sym=False):
-    """Replicates web-demo/rotor-rs/examples/gen_dataset.rs sample_drone."""
+    """Replicates web-demo/racer/examples/gen_dataset.rs sample_drone."""
     arms = np.full(4, rng.uniform(0.05, 0.40)) if sym else rng.uniform(0.05, 0.40, 4)
     d = arms / np.sqrt(2.0)
     rotor_pos = {

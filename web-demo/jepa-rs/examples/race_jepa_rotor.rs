@@ -10,7 +10,8 @@ use std::path::Path;
 
 use jepa_rs::{SkyJepa, AD, SD};
 use rotor_rs::rng::Rng;
-use rotor_rs::{Course, Gate, Multirotor, QuadParamsInput, Quat, RotorForce, State, Vec3};
+use rotor_rs::{Multirotor, QuadParamsInput, Quat, RotorForce, State, Vec3};
+use racer::{Course, Gate};
 
 fn params() -> QuadParamsInput {
     let d = 0.17 * std::f64::consts::FRAC_1_SQRT_2;

@@ -15,7 +15,7 @@ from pathlib import Path
 import torch
 
 ROOT = Path(__file__).resolve().parents[1]
-ASSETS = ROOT / "web-demo" / "rotor-rs" / "assets"
+ASSETS = ROOT / "web-demo" / "racer" / "assets"
 
 ckpt = sys.argv[1] if len(sys.argv) > 1 else "artifacts/skyrl_ctbr.pt"
 stem = sys.argv[2] if len(sys.argv) > 2 else "skyrl_ctbr"

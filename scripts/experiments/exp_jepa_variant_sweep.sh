@@ -77,8 +77,8 @@ run_variant() {
   python scripts/export_jepa.py "$ckpt" "$exp"
   python scripts/export_jepa_blob.py "$exp"
 
-  ROTOR_BLOB="web-demo/rotor-rs/assets/${exp}.jblob" cargo run --release --features jepa \
-    --manifest-path web-demo/rotor-rs/Cargo.toml \
+  ROTOR_BLOB="web-demo/racer/assets/${exp}.jblob" cargo run --release --features jepa \
+    --manifest-path web-demo/racer/Cargo.toml \
     --example rotor_fly | tee "${out_dir}/rotor_fly.log"
 }
 

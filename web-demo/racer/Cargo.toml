@@ -1,0 +1,22 @@
+[package]
+name = "racer"
+version = "0.1.0"
+edition = "2021"
+description = "drone-jepa's application layer on top of rotor-rs: SkyJEPA inference, MPPI planners, gate racing, RL policy runner, and the WASM demo bindings"
+license = "MIT"
+publish = false
+
+[dependencies]
+rotor-rs = { path = "../rotor-rs" }
+wasm-bindgen = { version = "0.2", optional = true }
+serde = { version = "1", features = ["derive"], optional = true }
+serde-wasm-bindgen = { version = "0.6", optional = true }
+
+[features]
+default = []
+wasm = ["dep:wasm-bindgen", "dep:serde", "dep:serde-wasm-bindgen"]
+mppi_debug = [] # prints MPPI internals for tuning
+
+[lib]
+# rlib for native examples; cdylib for the wasm-pack build.
+crate-type = ["cdylib", "rlib"]

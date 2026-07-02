@@ -6,6 +6,7 @@ description = "Vectorized gate-racing RL environment over rotor-rs, exposed as a
 
 [dependencies]
 rotor-rs = { path = "../rotor-rs" }
+racer = { path = "../racer" }
 
 [lib]
 crate-type = ["cdylib", "rlib"]

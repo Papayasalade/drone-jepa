@@ -10,9 +10,10 @@
 
 use std::os::raw::c_void;
 
+use racer::Gate;
 use rotor_rs::rng::Rng;
 use rotor_rs::{
-    Ctbr, CtbrCmd, Gate, Multirotor, QuadParamsInput, Quat, RotorForce, State, Vec3, GRAVITY,
+    Ctbr, CtbrCmd, Multirotor, QuadParamsInput, Quat, RotorForce, State, Vec3, GRAVITY,
 };
 
 pub const OBS_DIM: usize = 21; // vel(3) + R(9) + omega(3) + rel_g1(3) + rel_g2(3)

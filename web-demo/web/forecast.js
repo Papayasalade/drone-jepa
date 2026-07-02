@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import init, { WasmForecast } from "./pkg/rotor_rs.js";
+import init, { WasmForecast } from "./pkg/racer.js";
 
 await init();
 

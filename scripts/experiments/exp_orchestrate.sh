@@ -3,7 +3,7 @@
 # MPS is serialized (narrow-train waits for train-longer to finish).
 cd "$(git rev-parse --show-toplevel)"
 PY=.venv/bin/python
-RR=web-demo/rotor-rs
+RR=web-demo/racer
 FLEET=$RR/target/release/examples/fleet_fly
 LOG=/tmp/exp_results.log
 exec >> $LOG 2>&1

@@ -9,7 +9,7 @@
 use std::path::Path;
 
 use jepa_rs::{SkyJepa, AD, SD};
-use rotor_rs::jepa::SkyJepaLite;
+use racer::jepa::SkyJepaLite;
 
 /// Tiny deterministic LCG so the test is reproducible without rand.
 struct Lcg(u64);
@@ -27,7 +27,7 @@ fn check_stem(stem: &str) {
         root.join(format!("weights/{stem}.json")).to_str().unwrap(),
     )
     .expect("load candle model");
-    let blob = std::fs::read(root.join(format!("../rotor-rs/assets/{stem}.jblob")))
+    let blob = std::fs::read(root.join(format!("../racer/assets/{stem}.jblob")))
         .expect("read .jblob (run scripts/export_jepa_blob.py)");
     let lite = SkyJepaLite::from_blob(&blob);
 
@@ -90,5 +90,5 @@ fn lite_matches_candle_ctbr() {
 
 #[test]
 fn lite_matches_candle_rotor() {
-    check_stem("skyjepa_rotor");
+    check_stem("bigquad_unified");
 }

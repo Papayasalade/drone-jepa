@@ -3,7 +3,7 @@
 // quaternion is [x,y,z,w] = Three's convention, so orientation maps 1:1.
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import init, { WasmRacer } from "./pkg/rotor_rs.js";
+import init, { WasmRacer } from "./pkg/racer.js";
 
 await init();
 // Reproducible tracks: a `?seed=N` in the URL replays the exact same course

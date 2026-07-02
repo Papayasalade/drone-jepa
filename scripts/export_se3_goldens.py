@@ -17,7 +17,7 @@ from rotorpy.controllers.quadrotor_control import SE3Control
 
 from drone_jepa.data_gen.sim import sample_params
 
-OUT = Path(__file__).resolve().parents[1] / "web-demo" / "fixtures" / "se3"
+OUT = Path(__file__).resolve().parents[1] / "web-demo" / "rotor-rs" / "fixtures" / "se3"
 
 
 def vec(a):

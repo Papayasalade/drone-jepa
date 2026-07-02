@@ -5,7 +5,7 @@
 set -u
 cd "$(git rev-parse --show-toplevel)"
 PY=.venv/bin/python
-RR=web-demo/rotor-rs
+RR=web-demo/racer
 mkdir -p artifacts/logs
 export DRONE_MASS=1.2 DRONE_IXX=0.0189 DRONE_IYY=0.0191 DRONE_IZZ=0.0365 \
        DRONE_ARM=0.25 DRONE_K_ETA=3.92e-6 DRONE_K_M=9.6e-8 DRONE_TAU_M=0.02 \

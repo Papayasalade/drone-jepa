@@ -7,7 +7,7 @@
 
 use std::collections::VecDeque;
 
-use rotor_rs::mppi::RolloutModel;
+use racer::mppi::RolloutModel;
 use rotor_rs::{CtbrCmd, State, Vec3};
 
 use crate::{SkyJepa, AD, SD};
