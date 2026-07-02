@@ -306,7 +306,6 @@ fn enforce_forecast_clearance(mut state: State<f64>) -> State<f64> {
     state
 }
 
-#[cfg(feature = "jepa")]
 #[derive(Clone, Copy)]
 struct ForecastFrame {
     state: State<f64>,
@@ -314,10 +313,8 @@ struct ForecastFrame {
     t: f64,
 }
 
-#[cfg(feature = "jepa")]
 const FORECAST_AHEAD_STEPS: usize = 400; // 20 s at 20 Hz.
 
-#[cfg(feature = "jepa")]
 #[wasm_bindgen]
 pub struct WasmForecast {
     input: QuadParamsInput,
@@ -340,7 +337,6 @@ pub struct WasmForecast {
     ref_t0: f64,
 }
 
-#[cfg(feature = "jepa")]
 #[wasm_bindgen]
 impl WasmForecast {
     #[wasm_bindgen(constructor)]
