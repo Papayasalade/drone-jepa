@@ -8,6 +8,7 @@ Rust Se3Control can be asserted equal.
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import numpy as np
@@ -17,7 +18,7 @@ from rotorpy.controllers.quadrotor_control import SE3Control
 
 from drone_jepa.data_gen.sim import sample_params
 
-OUT = Path(__file__).resolve().parents[1] / "web-demo" / "rotor-rs" / "fixtures" / "se3"
+OUT = Path(os.environ.get("ROTOR_RS_DIR", Path(__file__).resolve().parents[2] / "rotor-rs")) / "fixtures" / "se3"
 
 
 def vec(a):

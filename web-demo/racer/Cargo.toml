@@ -7,7 +7,7 @@ license = "MIT"
 publish = false
 
 [dependencies]
-rotor-rs = { path = "../rotor-rs" }
+rotor-rs = "0.1"
 wasm-bindgen = { version = "0.2", optional = true }
 serde = { version = "1", features = ["derive"], optional = true }
 serde-wasm-bindgen = { version = "0.6", optional = true }

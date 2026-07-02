@@ -92,6 +92,8 @@ dependencies = [
 [[package]]
 name = "rotor-rs"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0693e2a0a5c7aa7da8ef7a0dd73c40ef5ead2ab751209a40ccf1594917ebaeac"
 
 [[package]]
 name = "rustversion"

@@ -63,9 +63,9 @@ drone_jepa/               # the model + training (PyTorch)
   rl/                     # PPO baseline (PufferLib on the Rust env)
 
 web-demo/
-  rotor-rs/               # the simulator — standalone repo, vendored as a git
-                          # submodule (also on crates.io as `rotor-rs`)
-  racer/                  # app layer on top of it: SkyJEPA inference, MPPI
+  racer/                  # app layer on the rotor-rs simulator (a crates.io
+                          # dependency: crates.io/crates/rotor-rs, sources at
+                          # github.com/Papayasalade/rotor-rs): SkyJEPA inference, MPPI
                           # planners, gates, RL runner, WASM demo bindings,
                           # model assets, and all data-gen/benchmark examples
     examples/             # rotor_fly (race benchmark), gen_dataset*, dagger_collect, ...
@@ -85,8 +85,8 @@ Requires Python 3.11+ (`pip install -e .`) and a Rust toolchain.
 
 ```bash
 # 1. build the simulator + harnesses
-git submodule update --init          # the rotor-rs simulator
 cd web-demo/racer && cargo build --release --examples && cd ../..
+# (the rotor-rs simulator is fetched from crates.io automatically)
 
 # 2. generate training data (8000 trajectories, ~5 min, all cores)
 web-demo/racer/target/release/examples/gen_dataset_rf 8000 200 artifacts/data.bin 7

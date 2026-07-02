@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 from pathlib import Path
 
 import numpy as np
@@ -37,7 +38,7 @@ from drone_jepa.data_gen.sim import (
     sample_params,
 )
 
-OUT_DIR = Path(__file__).resolve().parents[1] / "web-demo" / "rotor-rs" / "fixtures" / "sim"
+OUT_DIR = Path(os.environ.get("ROTOR_RS_DIR", Path(__file__).resolve().parents[2] / "rotor-rs")) / "fixtures" / "sim"
 
 
 # --------------------------------------------------------------------------- #
