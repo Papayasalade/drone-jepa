@@ -37,9 +37,8 @@ via the Quickstart (~80 min) and export with `scripts/export_jepa_blob.py`.
 
 ```bash
 # build the WASM bundle once, then serve statically
-cd web-demo/racer
-wasm-pack build --target web --out-dir ../web/pkg -- --features wasm
-cd ../web && python3 -m http.server 8000
+scripts/build_wasm.sh     # wasm-pack with source paths remapped
+cd web-demo/web && python3 -m http.server 8000
 # -> http://localhost:8000/race.html and /forecast.html
 ```
 
