@@ -20,7 +20,7 @@ scene.fog = new THREE.Fog(0x0b0f14, 24, 70);
 const camera = new THREE.PerspectiveCamera(58, innerWidth / innerHeight, 0.1, 300);
 camera.up.set(0, 0, 1); // z-up world
 // 3/4 view framing the full 0-15 m sky column (gates up high, floor below)
-camera.position.set(0.5, -12.5, 10.5);
+camera.position.set(-0.5, -15.0, 10.8);
 camera.lookAt(6.0, 0, 8.0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
